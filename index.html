@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sebastian Becerra — Digital Marketing & Search Optimization</title>
+    <meta name="description" content="Digital marketing portfolio showcasing SEO, GEO, analytics infrastructure, and AI-powered marketing systems.">
+    <style>
+        :root {
+            --bg: #0a0a0a;
+            --surface: #141414;
+            --border: #222;
+            --text: #e5e5e5;
+            --text-muted: #888;
+            --accent: #3b82f6;
+            --accent-dim: #1e3a5f;
+            --green: #22c55e;
+            --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            --mono: 'SF Mono', 'Fira Code', monospace;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: var(--font);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header */
+        header {
+            padding: 80px 0 60px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        header h1 {
+            font-size: 2rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 8px;
+        }
+
+        header .subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        header .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            padding: 4px 12px;
+            border-radius: 100px;
+            font-family: var(--mono);
+        }
+
+        .tag.highlight {
+            border-color: var(--accent-dim);
+            color: var(--accent);
+        }
+
+        /* Sections */
+        section {
+            padding: 60px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        section:last-of-type {
+            border-bottom: none;
+        }
+
+        .section-label {
+            font-family: var(--mono);
+            font-size: 0.75rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 12px;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            margin-bottom: 16px;
+        }
+
+        h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        p {
+            color: var(--text-muted);
+            margin-bottom: 16px;
+        }
+
+        p.lead {
+            font-size: 1.05rem;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        /* Case Studies */
+        .case-study {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 24px;
+        }
+
+        .case-study .meta {
+            font-family: var(--mono);
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 16px;
+            margin: 24px 0;
+        }
+
+        .metric {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+        }
+
+        .metric .number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text);
+            font-family: var(--mono);
+        }
+
+        .metric .label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        .bullet-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .bullet-list li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 10px;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .bullet-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 6px;
+            height: 6px;
+            background: var(--accent);
+            border-radius: 50%;
+        }
+
+        /* GEO Perspective */
+        .perspective-block {
+            background: var(--surface);
+            border-left: 3px solid var(--accent);
+            padding: 24px 28px;
+            border-radius: 0 8px 8px 0;
+            margin: 20px 0;
+        }
+
+        .perspective-block p {
+            color: var(--text);
+            margin-bottom: 12px;
+        }
+
+        .perspective-block p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Tools Grid */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .tool-item {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 12px 16px;
+            font-size: 0.9rem;
+        }
+
+        .tool-item .tool-name {
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .tool-item .tool-level {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        /* Footer */
+        footer {
+            padding: 48px 0;
+            text-align: center;
+        }
+
+        footer p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .contact-row {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            flex-wrap: wrap;
+            margin-top: 12px;
+        }
+
+        .contact-row a {
+            font-family: var(--mono);
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            header { padding: 48px 0 36px; }
+            header h1 { font-size: 1.6rem; }
+            section { padding: 40px 0; }
+            .case-study { padding: 24px; }
+            .metrics { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <header>
+            <h1>Sebastian Becerra</h1>
+            <div class="subtitle">Digital Marketing & Search Optimization</div>
+            <div class="tags">
+                <span class="tag highlight">SEO / GEO</span>
+                <span class="tag highlight">GA4 / GTM</span>
+                <span class="tag highlight">AI / LLM</span>
+                <span class="tag">SEM / PPC</span>
+                <span class="tag">WordPress</span>
+                <span class="tag">Python</span>
+                <span class="tag">SQL</span>
+                <span class="tag">Bilingual EN/ES</span>
+            </div>
+        </header>
+
+        <!-- About -->
+        <section>
+            <div class="section-label">About</div>
+            <p class="lead">
+                I build digital properties that get found &mdash; by humans and by AI.
+            </p>
+            <p>
+                7+ years in digital marketing, with deep roots in analytics infrastructure (GA4/GTM),
+                organic search optimization, and AI-powered systems. I've managed multi-brand SEO across
+                enterprise web properties, built inbound engines from scratch with zero paid budget, and
+                shipped AI-powered tools to production using large language models.
+            </p>
+            <p>
+                Based in Santa Barbara, CA. Agency background (TKO Advertising).
+                Native bilingual in English and Spanish.
+            </p>
+        </section>
+
+        <!-- Case Study 1: SeeScan -->
+        <section>
+            <div class="section-label">Case Study</div>
+            <div class="case-study">
+                <div class="meta">SeeScan, Inc. &mdash; 2019&ndash;Present &mdash; San Diego, CA (Remote)</div>
+                <h2>Multi-Brand SEO & Analytics Infrastructure</h2>
+                <p>
+                    SeeScan builds underground inspection technology used by utilities and municipalities worldwide.
+                    I own the digital marketing infrastructure across three distinct brand websites:
+                    SeeScan, DeepSea, and SeeSnake.
+                </p>
+
+                <div class="metrics">
+                    <div class="metric">
+                        <div class="number">250K+</div>
+                        <div class="label">Annual sessions tracked</div>
+                    </div>
+                    <div class="metric">
+                        <div class="number">3</div>
+                        <div class="label">Brand sites managed</div>
+                    </div>
+                    <div class="metric">
+                        <div class="number">6+</div>
+                        <div class="label">Years of GA4/GTM data</div>
+                    </div>
+                    <div class="metric">
+                        <div class="number">1</div>
+                        <div class="label">AI tool shipped to prod</div>
+                    </div>
+                </div>
+
+                <h3>What I Built</h3>
+                <ul class="bullet-list">
+                    <li>Full GA4 + Google Tag Manager infrastructure with custom event tracking, conversion funnels, and cross-domain measurement across all three brand properties</li>
+                    <li>Ongoing SEO audit program: keyword rankings, metadata health, content gap analysis, and search intent mapping to prioritize high-impact optimizations</li>
+                    <li>WordPress site architecture and on-page SEO across all properties &mdash; structured data, page speed optimization, crawlability improvements</li>
+                    <li>AI-powered pricing configurator using LLM technology, shipped to production and recognized by executive leadership for direct business impact</li>
+                    <li>Analytics dashboards integrating GA4, Google Ads, and CRM data into a unified view for full-funnel attribution and marketing performance decisions</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Case Study 2: Los Bravos -->
+        <section>
+            <div class="section-label">Case Study</div>
+            <div class="case-study">
+                <div class="meta">Los Bravos Consulting &mdash; 2025&ndash;Present &mdash; Santa Barbara, CA</div>
+                <h2>Zero-Budget Inbound Engine for Real Estate</h2>
+                <p>
+                    Los Bravos is a cross-border industrial real estate consulting firm focused on
+                    nearshoring opportunities in Northern Mexico. I built their entire digital presence
+                    and lead intelligence system from scratch &mdash; no ad spend, pure organic strategy.
+                </p>
+
+                <div class="metrics">
+                    <div class="metric">
+                        <div class="number">$0</div>
+                        <div class="label">Paid media budget</div>
+                    </div>
+                    <div class="metric">
+                        <div class="number">1,121</div>
+                        <div class="label">Qualified lead records</div>
+                    </div>
+                    <div class="metric">
+                        <div class="number">6,218</div>
+                        <div class="label">Enriched database records</div>
+                    </div>
+                    <div class="metric">
+                        <div class="number">59</div>
+                        <div class="label">Research packets built</div>
+                    </div>
+                </div>
+
+                <h3>What I Built</h3>
+                <ul class="bullet-list">
+                    <li>losbravos.mx &mdash; designed site architecture, content strategy, and SEO foundation as an organic inbound engine targeting a niche B2B real estate market</li>
+                    <li>Structured lead intelligence platform spanning 4 target industries with research packets, company profiles, and competitive intelligence</li>
+                    <li>AI-powered natural language search tool (Groq LLM) enabling plain-English queries against the full intelligence database &mdash; answer-engine thinking applied to a real business problem</li>
+                    <li>LinkedIn content strategy and targeted audience growth for thought leadership in the nearshoring/industrial real estate space</li>
+                    <li>Delivered 104% of contracted scope including the enriched database (124% of target)</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Case Study 3: TKO (brief) -->
+        <section>
+            <div class="section-label">Case Study</div>
+            <div class="case-study">
+                <div class="meta">TKO Advertising &mdash; 2017&ndash;2018 &mdash; Austin, TX (Agency)</div>
+                <h2>Multicultural Campaign Performance</h2>
+                <p>
+                    Agency experience creating bilingual content and managing campaign analytics
+                    across multiple client accounts at a multicultural advertising firm.
+                </p>
+
+                <div class="metrics">
+                    <div class="metric">
+                        <div class="number">440%</div>
+                        <div class="label">Engagement increase (Valvoline)</div>
+                    </div>
+                    <div class="metric">
+                        <div class="number">421K</div>
+                        <div class="label">Facebook followers grown</div>
+                    </div>
+                </div>
+
+                <ul class="bullet-list">
+                    <li>Data-informed content optimization and audience targeting for Valvoline multicultural campaign</li>
+                    <li>Bilingual (EN/ES) content creation and transcreation across paid and organic channels</li>
+                    <li>Social media analytics, reporting, and campaign performance optimization</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- GEO Perspective -->
+        <section>
+            <div class="section-label">Perspective</div>
+            <h2>My Take on Generative Engine Optimization</h2>
+            <p>
+                The search landscape is splitting in two. Traditional search still matters, but a growing
+                share of high-intent queries now start in AI &mdash; ChatGPT, Gemini, Perplexity,
+                and Google's own AI Overviews. The question isn't whether to optimize for AI-driven
+                discovery. It's how fast you can get there.
+            </p>
+
+            <div class="perspective-block">
+                <p>
+                    Most companies are still treating GEO as a future problem. I think the competitive
+                    window is right now &mdash; Q1/Q2 2026 &mdash; before best practices harden and
+                    everyone catches up.
+                </p>
+                <p>
+                    The advantage goes to teams that understand LLMs from the inside: how they parse
+                    content, what they privilege in retrieval, how structured data and entity clarity
+                    affect citation probability. That's not something you learn from reading blog posts.
+                    You learn it by building with these models.
+                </p>
+                <p>
+                    I've shipped an AI-powered product to production. I use multiple LLMs daily as core
+                    workflow tools. I've built NLP search interfaces. That hands-on fluency with how
+                    these systems actually work &mdash; not just what they output &mdash; is what makes
+                    the difference between incremental SEO tweaks and a real GEO strategy.
+                </p>
+            </div>
+
+            <h3>What I'd Focus On</h3>
+            <ul class="bullet-list">
+                <li><strong>Entity authority:</strong> Making sure the brand is clearly defined, consistently described, and semantically rich across every surface that LLMs can crawl</li>
+                <li><strong>Structured content at the source:</strong> Schema markup, FAQ structures, comparison data, and clear answer-ready formatting that AI models prefer to cite</li>
+                <li><strong>Monitoring AI citations:</strong> Tracking how and when the brand appears in AI-generated responses across ChatGPT, Gemini, Perplexity, and AI Overviews &mdash; building a measurement framework for a channel that doesn't have one yet</li>
+                <li><strong>Natural language keyword evolution:</strong> Shifting from short-tail terms to the conversational, intent-rich queries people actually use when talking to AI</li>
+            </ul>
+        </section>
+
+        <!-- Tools -->
+        <section>
+            <div class="section-label">Toolkit</div>
+            <h2>Tools & Platforms</h2>
+
+            <div class="tools-grid">
+                <div class="tool-item">
+                    <div class="tool-name">Google Analytics 4</div>
+                    <div class="tool-level">Expert &mdash; 6+ years</div>
+                </div>
+                <div class="tool-item">
+                    <div class="tool-name">Google Tag Manager</div>
+                    <div class="tool-level">Expert &mdash; 6+ years</div>
+                </div>
+                <div class="tool-item">
+                    <div class="tool-name">Google Ads</div>
+                    <div class="tool-level">Proficient</div>
+                </div>
+                <div class="tool-item">
+                    <div class="tool-name">WordPress</div>
+                    <div class="tool-level">Expert &mdash; dev + SEO</div>
+                </div>
+                <div class="tool-item">
+                    <div class="tool-name">SQL</div>
+                    <div class="tool-level">Proficient</div>
+                </div>
+                <div class="tool-item">
+                    <div class="tool-name">Python</div>
+                    <div class="tool-level">Working &mdash; data + automation</div>
+                </div>
+                <div class="tool-item">
+                    <div class="tool-name">Tableau</div>
+                    <div class="tool-level">Proficient</div>
+                </div>
+                <div class="tool-item">
+                    <div class="tool-name">Google Sheets</div>
+                    <div class="tool-level">Advanced</div>
+                </div>
+                <div class="tool-item">
+                    <div class="tool-name">AI/LLM Integration</div>
+                    <div class="tool-level">Claude, GPT, Groq, Gemini</div>
+                </div>
+                <div class="tool-item">
+                    <div class="tool-name">HTML/CSS/JS</div>
+                    <div class="tool-level">Proficient</div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>Sebastian Becerra &mdash; Santa Barbara, CA</p>
+            <div class="contact-row">
+                <a href="mailto:sebastianmbecerra5@gmail.com">sebastianmbecerra5@gmail.com</a>
+                <a href="https://github.com/sbc1-code">github.com/sbc1-code</a>
+            </div>
+        </footer>
+
+    </div>
+</body>
+</html>
