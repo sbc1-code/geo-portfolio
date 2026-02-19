@@ -3,522 +3,1114 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sebastian Becerra — Digital Marketing & Search Optimization</title>
-    <meta name="description" content="Digital marketing portfolio showcasing SEO, GEO, analytics infrastructure, and AI-powered marketing systems.">
+    <title>Sebastian Becerra | Digital Marketing, SEO & Analytics Portfolio</title>
+    <meta name="description" content="Portfolio of Sebastian Becerra — 7 years in digital marketing, GA4/GTM analytics infrastructure, AI-powered tools, and organic search optimization. Based in Santa Barbara, CA.">
+    <link rel="canonical" href="https://sbc1-code.github.io/geo-portfolio/">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Sebastian Becerra | Digital Marketing, SEO & Analytics Portfolio">
+    <meta property="og:description" content="7 years in digital marketing. GA4/GTM infrastructure across 250K+ annual sessions. AI tools shipped to production. Organic search and GEO strategy.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sbc1-code.github.io/geo-portfolio/">
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Sebastian Becerra",
+        "jobTitle": "Digital Marketing & Search Optimization Specialist",
+        "url": "https://sbc1-code.github.io/geo-portfolio/",
+        "email": "sebastianmbecerra5@gmail.com",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Santa Barbara",
+            "addressRegion": "CA",
+            "addressCountry": "US"
+        },
+        "sameAs": [
+            "https://github.com/sbc1-code"
+        ],
+        "knowsLanguage": ["en", "es"],
+        "knowsAbout": [
+            "Search Engine Optimization",
+            "Generative Engine Optimization",
+            "Google Analytics 4",
+            "Google Tag Manager",
+            "AI/LLM Integration",
+            "WordPress Development",
+            "Digital Marketing Analytics"
+        ]
+    }
+    </script>
+
+    <!-- Google Fonts: Inter as web-safe equivalent of Helvetica Now -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
     <style>
+        /* ==========================================================================
+           Design Tokens — AppFolio Brand System
+           ========================================================================== */
         :root {
-            --bg: #0a0a0a;
-            --surface: #141414;
-            --border: #222;
-            --text: #e5e5e5;
-            --text-muted: #888;
-            --accent: #3b82f6;
-            --accent-dim: #1e3a5f;
-            --green: #22c55e;
-            --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-            --mono: 'SF Mono', 'Fira Code', monospace;
+            --navy: #05094F;
+            --navy-dark: #04065B;
+            --light-blue: #CDE9F9;
+            --warm-neutral: #F0F0EB;
+            --yellow: #FFE754;
+            --light-yellow: #FFFEE1;
+            --cool-neutral: #EDF0F4;
+            --white: #FFFFFF;
+            --text-primary: #05094F;
+            --text-secondary: #3D4063;
+            --text-muted: #6B6E8A;
+            --border: #D4D6E1;
+            --font-heading: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            --radius-pill: 100px;
+            --radius-card: 16px;
+            --radius-sm: 8px;
+            --max-width: 1120px;
+            --focus-ring: 0 0 0 3px rgba(5, 9, 79, 0.35);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        /* ==========================================================================
+           Reset & Base
+           ========================================================================== */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+        }
 
         body {
-            background: var(--bg);
-            color: var(--text);
-            font-family: var(--font);
-            line-height: 1.6;
+            background: var(--white);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            line-height: 1.7;
             -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
+        img { max-width: 100%; height: auto; display: block; }
+
+        /* ==========================================================================
+           Accessibility — Skip Link
+           ========================================================================== */
+        .skip-link {
+            position: absolute;
+            top: -100%;
+            left: 16px;
+            background: var(--navy);
+            color: var(--white);
+            padding: 12px 24px;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            font-size: 0.875rem;
+            text-decoration: none;
+            z-index: 9999;
+            transition: top 0.2s ease;
+        }
+
+        .skip-link:focus {
+            top: 16px;
+            outline: 3px solid var(--yellow);
+            outline-offset: 2px;
+        }
+
+        /* ==========================================================================
+           Focus States — WCAG AA
+           ========================================================================== */
+        a:focus-visible,
+        button:focus-visible,
+        [tabindex]:focus-visible {
+            outline: 3px solid var(--navy);
+            outline-offset: 3px;
+            border-radius: 4px;
+        }
+
+        /* ==========================================================================
+           Layout
+           ========================================================================== */
         .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .container--narrow {
             max-width: 800px;
             margin: 0 auto;
             padding: 0 24px;
         }
 
-        /* Header */
-        header {
-            padding: 80px 0 60px;
+        /* ==========================================================================
+           Navigation / Header
+           ========================================================================== */
+        .site-header {
+            background: var(--white);
             border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
-        header h1 {
-            font-size: 2rem;
+        .site-header__inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 24px;
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+
+        .site-header__name {
+            font-family: var(--font-heading);
+            font-size: 1.125rem;
             font-weight: 600;
-            letter-spacing: -0.02em;
-            margin-bottom: 8px;
+            color: var(--navy);
+            text-decoration: none;
         }
 
-        header .subtitle {
+        .site-header__name:hover {
+            color: var(--text-secondary);
+        }
+
+        .site-nav {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .site-nav__link {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: var(--radius-pill);
+            transition: background 0.15s ease, color 0.15s ease;
+        }
+
+        .site-nav__link:hover {
+            background: var(--cool-neutral);
+            color: var(--navy);
+        }
+
+        .site-nav__cta {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--white);
+            background: var(--navy);
+            text-decoration: none;
+            padding: 8px 20px;
+            border-radius: var(--radius-pill);
+            transition: background 0.15s ease;
+        }
+
+        .site-nav__cta:hover {
+            background: var(--navy-dark);
+        }
+
+        /* Mobile nav toggle */
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            color: var(--navy);
+        }
+
+        .nav-toggle svg {
+            width: 24px;
+            height: 24px;
+            display: block;
+        }
+
+        /* ==========================================================================
+           Hero
+           ========================================================================== */
+        .hero {
+            background: var(--cool-neutral);
+            padding: 80px 24px 88px;
+        }
+
+        .hero__inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+
+        .hero__eyebrow {
+            font-size: 0.8125rem;
+            font-weight: 600;
             color: var(--text-muted);
-            font-size: 1.1rem;
-            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 16px;
         }
 
-        header .tags {
+        .hero h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(2rem, 5vw, 3.25rem);
+            font-weight: 400;
+            line-height: 1.2;
+            color: var(--navy);
+            max-width: 720px;
+            margin-bottom: 24px;
+        }
+
+        .hero__description {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            max-width: 640px;
+            line-height: 1.7;
+            margin-bottom: 32px;
+        }
+
+        .hero__tags {
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
         }
 
-        .tag {
-            background: var(--surface);
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            padding: 6px 16px;
+            border-radius: var(--radius-pill);
+            font-size: 0.8125rem;
+            font-weight: 500;
             border: 1px solid var(--border);
+            background: var(--white);
+            color: var(--text-primary);
+        }
+
+        .pill--accent {
+            background: var(--navy);
+            color: var(--white);
+            border-color: var(--navy);
+        }
+
+        /* ==========================================================================
+           Sections
+           ========================================================================== */
+        .section {
+            padding: 80px 24px;
+        }
+
+        .section--warm {
+            background: var(--warm-neutral);
+        }
+
+        .section--light-blue {
+            background: var(--light-blue);
+        }
+
+        .section--cool {
+            background: var(--cool-neutral);
+        }
+
+        .section--navy {
+            background: var(--navy-dark);
+            color: var(--white);
+        }
+
+        .section__eyebrow {
+            font-size: 0.8125rem;
+            font-weight: 600;
             color: var(--text-muted);
-            font-size: 0.8rem;
-            padding: 4px 12px;
-            border-radius: 100px;
-            font-family: var(--mono);
-        }
-
-        .tag.highlight {
-            border-color: var(--accent-dim);
-            color: var(--accent);
-        }
-
-        /* Sections */
-        section {
-            padding: 60px 0;
-            border-bottom: 1px solid var(--border);
-        }
-
-        section:last-of-type {
-            border-bottom: none;
-        }
-
-        .section-label {
-            font-family: var(--mono);
-            font-size: 0.75rem;
-            color: var(--accent);
             text-transform: uppercase;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.08em;
             margin-bottom: 12px;
         }
 
-        h2 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            letter-spacing: -0.01em;
+        .section--navy .section__eyebrow {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .section h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+            font-weight: 400;
+            line-height: 1.25;
+            color: var(--navy);
             margin-bottom: 16px;
         }
 
-        h3 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 8px;
+        .section--navy h2 {
+            color: var(--white);
         }
 
-        p {
-            color: var(--text-muted);
-            margin-bottom: 16px;
-        }
-
-        p.lead {
-            font-size: 1.05rem;
-            color: var(--text);
+        .section__lead {
+            font-size: 1.0625rem;
+            color: var(--text-secondary);
+            max-width: 640px;
+            margin-bottom: 40px;
             line-height: 1.7;
         }
 
-        /* Case Studies */
-        .case-study {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 32px;
-            margin-bottom: 24px;
+        .section--navy .section__lead {
+            color: rgba(255, 255, 255, 0.8);
         }
 
-        .case-study .meta {
-            font-family: var(--mono);
-            font-size: 0.8rem;
+        /* ==========================================================================
+           About
+           ========================================================================== */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 32px;
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+
+        .about-text p {
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+            line-height: 1.7;
+        }
+
+        .about-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ==========================================================================
+           Case Study Cards
+           ========================================================================== */
+        .cases-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 32px;
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+
+        .case-card {
+            background: var(--white);
+            border-radius: var(--radius-card);
+            padding: 40px;
+            box-shadow: 0 1px 3px rgba(5, 9, 79, 0.06), 0 8px 24px rgba(5, 9, 79, 0.04);
+            transition: box-shadow 0.2s ease;
+        }
+
+        .case-card:hover {
+            box-shadow: 0 2px 6px rgba(5, 9, 79, 0.08), 0 12px 32px rgba(5, 9, 79, 0.06);
+        }
+
+        .case-card__meta {
+            font-size: 0.8125rem;
+            font-weight: 500;
             color: var(--text-muted);
             margin-bottom: 12px;
         }
 
-        .metrics {
+        .case-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.375rem;
+            font-weight: 500;
+            color: var(--navy);
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        .case-card__description {
+            color: var(--text-secondary);
+            margin-bottom: 28px;
+            line-height: 1.7;
+        }
+
+        /* Metrics row */
+        .metrics-row {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
             gap: 16px;
-            margin: 24px 0;
+            margin-bottom: 28px;
         }
 
         .metric {
-            background: var(--bg);
-            border: 1px solid var(--border);
-            border-radius: 8px;
+            background: var(--cool-neutral);
+            border-radius: var(--radius-sm);
             padding: 16px;
+            text-align: center;
         }
 
-        .metric .number {
+        .metric__value {
+            font-family: var(--font-heading);
             font-size: 1.5rem;
             font-weight: 700;
-            color: var(--text);
-            font-family: var(--mono);
+            color: var(--navy);
+            line-height: 1.2;
         }
 
-        .metric .label {
-            font-size: 0.8rem;
+        .metric__label {
+            font-size: 0.75rem;
             color: var(--text-muted);
             margin-top: 4px;
+            line-height: 1.3;
         }
 
-        .bullet-list {
+        /* Bullet list inside cards */
+        .case-card__list-heading {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--navy);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 12px;
+        }
+
+        .case-list {
             list-style: none;
             padding: 0;
         }
 
-        .bullet-list li {
+        .case-list li {
             position: relative;
             padding-left: 20px;
             margin-bottom: 10px;
-            color: var(--text-muted);
-            font-size: 0.95rem;
+            color: var(--text-secondary);
+            font-size: 0.9375rem;
+            line-height: 1.6;
         }
 
-        .bullet-list li::before {
+        .case-list li::before {
             content: '';
             position: absolute;
             left: 0;
             top: 10px;
             width: 6px;
             height: 6px;
-            background: var(--accent);
+            background: var(--navy);
             border-radius: 50%;
         }
 
-        /* GEO Perspective */
-        .perspective-block {
-            background: var(--surface);
-            border-left: 3px solid var(--accent);
-            padding: 24px 28px;
-            border-radius: 0 8px 8px 0;
-            margin: 20px 0;
+        /* ==========================================================================
+           GEO Perspective
+           ========================================================================== */
+        .perspective-content {
+            max-width: var(--max-width);
+            margin: 0 auto;
         }
 
-        .perspective-block p {
-            color: var(--text);
-            margin-bottom: 12px;
+        .perspective-content p {
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+            line-height: 1.7;
+            max-width: 720px;
         }
 
-        .perspective-block p:last-child {
+        .callout-box {
+            background: var(--light-yellow);
+            border-left: 4px solid var(--yellow);
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            padding: 28px 32px;
+            margin: 32px 0;
+            max-width: 720px;
+        }
+
+        .callout-box p {
+            color: var(--text-primary);
+            margin-bottom: 14px;
+        }
+
+        .callout-box p:last-child {
             margin-bottom: 0;
         }
 
-        /* Tools Grid */
+        .focus-areas {
+            margin-top: 32px;
+            max-width: 720px;
+        }
+
+        .focus-areas h3 {
+            font-family: var(--font-heading);
+            font-size: 1.125rem;
+            font-weight: 500;
+            color: var(--navy);
+            margin-bottom: 16px;
+        }
+
+        /* ==========================================================================
+           Tools Section
+           ========================================================================== */
+        .tools-content {
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+
         .tools-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             gap: 12px;
-            margin-top: 16px;
         }
 
-        .tool-item {
-            background: var(--surface);
+        .tool-card {
+            background: var(--white);
             border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 12px 16px;
-            font-size: 0.9rem;
+            border-radius: var(--radius-sm);
+            padding: 16px 20px;
+            transition: border-color 0.15s ease;
         }
 
-        .tool-item .tool-name {
+        .tool-card:hover {
+            border-color: var(--navy);
+        }
+
+        .tool-card__name {
             font-weight: 600;
-            color: var(--text);
+            font-size: 0.9375rem;
+            color: var(--navy);
         }
 
-        .tool-item .tool-level {
-            font-size: 0.75rem;
+        .tool-card__level {
+            font-size: 0.8125rem;
             color: var(--text-muted);
+            margin-top: 2px;
         }
 
-        /* Footer */
-        footer {
-            padding: 48px 0;
+        /* ==========================================================================
+           Footer / Contact
+           ========================================================================== */
+        .site-footer {
+            background: var(--navy-dark);
+            color: var(--white);
+            padding: 64px 24px 48px;
+        }
+
+        .site-footer__inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
             text-align: center;
         }
 
-        footer p {
-            color: var(--text-muted);
-            font-size: 0.9rem;
+        .site-footer h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(1.375rem, 3vw, 1.75rem);
+            font-weight: 400;
+            color: var(--white);
+            margin-bottom: 8px;
         }
 
-        footer a {
-            color: var(--accent);
-            text-decoration: none;
+        .site-footer__sub {
+            color: rgba(255, 255, 255, 0.65);
+            margin-bottom: 32px;
+            font-size: 1rem;
         }
 
-        footer a:hover {
-            text-decoration: underline;
-        }
-
-        .contact-row {
+        .contact-links {
             display: flex;
             justify-content: center;
-            gap: 24px;
+            gap: 16px;
             flex-wrap: wrap;
-            margin-top: 12px;
+            margin-bottom: 48px;
         }
 
-        .contact-row a {
-            font-family: var(--mono);
-            font-size: 0.85rem;
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 24px;
+            border-radius: var(--radius-pill);
+            font-size: 0.875rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: background 0.15s ease, color 0.15s ease;
         }
 
-        /* Responsive */
-        @media (max-width: 600px) {
-            header { padding: 48px 0 36px; }
-            header h1 { font-size: 1.6rem; }
-            section { padding: 40px 0; }
-            .case-study { padding: 24px; }
-            .metrics { grid-template-columns: 1fr 1fr; }
+        .contact-link--primary {
+            background: var(--white);
+            color: var(--navy);
+        }
+
+        .contact-link--primary:hover {
+            background: var(--cool-neutral);
+        }
+
+        .contact-link--outline {
+            background: transparent;
+            color: var(--white);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .contact-link--outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .site-footer__bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.12);
+            padding-top: 24px;
+            color: rgba(255, 255, 255, 0.45);
+            font-size: 0.8125rem;
+        }
+
+        /* ==========================================================================
+           Responsive
+           ========================================================================== */
+        @media (min-width: 768px) {
+            .cases-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .metrics-row {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 56px 24px 64px;
+            }
+
+            .section {
+                padding: 56px 24px;
+            }
+
+            .case-card {
+                padding: 28px;
+            }
+
+            .metrics-row {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .tools-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .site-nav {
+                display: none;
+            }
+
+            .site-nav--open {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                border-bottom: 1px solid var(--border);
+                padding: 16px 24px;
+                box-shadow: 0 8px 24px rgba(5, 9, 79, 0.08);
+            }
+
+            .nav-toggle {
+                display: block;
+            }
+
+            .callout-box {
+                padding: 20px 24px;
+            }
+
+            .contact-links {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.75rem;
+            }
+
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .metrics-row {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+
+            .metric {
+                padding: 12px;
+            }
+
+            .metric__value {
+                font-size: 1.25rem;
+            }
+        }
+
+        /* ==========================================================================
+           Print
+           ========================================================================== */
+        @media print {
+            .site-header, .skip-link { display: none; }
+            .section { padding: 32px 0; }
+            body { font-size: 12pt; color: #000; }
+            a { color: #000; text-decoration: underline; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
 
-        <header>
-            <h1>Sebastian Becerra</h1>
-            <div class="subtitle">Digital Marketing & Search Optimization</div>
-            <div class="tags">
-                <span class="tag highlight">SEO / GEO</span>
-                <span class="tag highlight">GA4 / GTM</span>
-                <span class="tag highlight">AI / LLM</span>
-                <span class="tag">SEM / PPC</span>
-                <span class="tag">WordPress</span>
-                <span class="tag">Python</span>
-                <span class="tag">SQL</span>
-                <span class="tag">Bilingual EN/ES</span>
-            </div>
-        </header>
+    <!-- Skip to Content — a11y -->
+    <a class="skip-link" href="#main-content">Skip to main content</a>
 
-        <!-- About -->
-        <section>
-            <div class="section-label">About</div>
-            <p class="lead">
-                I build digital properties that get found &mdash; by humans and by AI.
-            </p>
-            <p>
-                7+ years in digital marketing, with deep roots in analytics infrastructure (GA4/GTM),
-                organic search optimization, and AI-powered systems. I've managed multi-brand SEO across
-                enterprise web properties, built inbound engines from scratch with zero paid budget, and
-                shipped AI-powered tools to production using large language models.
-            </p>
-            <p>
-                Based in Santa Barbara, CA. Agency background (TKO Advertising).
-                Native bilingual in English and Spanish.
-            </p>
-        </section>
+    <!-- ====================================================================
+         HEADER / NAVIGATION
+         ==================================================================== -->
+    <header class="site-header" role="banner">
+        <div class="site-header__inner">
+            <a href="#" class="site-header__name" aria-label="Sebastian Becerra — Home">Sebastian Becerra</a>
 
-        <!-- Case Study 1: SeeScan -->
-        <section>
-            <div class="section-label">Case Study</div>
-            <div class="case-study">
-                <div class="meta">SeeScan, Inc. &mdash; 2019&ndash;Present &mdash; San Diego, CA (Remote)</div>
-                <h2>Multi-Brand SEO & Analytics Infrastructure</h2>
-                <p>
-                    SeeScan builds underground inspection technology used by utilities and municipalities worldwide.
-                    I own the digital marketing infrastructure across three distinct brand websites:
-                    SeeScan, DeepSea, and SeeSnake.
+            <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation menu">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/>
+                </svg>
+            </button>
+
+            <nav id="site-nav" class="site-nav" role="navigation" aria-label="Primary navigation">
+                <a class="site-nav__link" href="#about">About</a>
+                <a class="site-nav__link" href="#work">Work</a>
+                <a class="site-nav__link" href="#geo">GEO</a>
+                <a class="site-nav__link" href="#tools">Tools</a>
+                <a class="site-nav__cta" href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ====================================================================
+         MAIN CONTENT
+         ==================================================================== -->
+    <main id="main-content">
+
+        <!-- ================================================================
+             HERO
+             ================================================================ -->
+        <section class="hero" aria-label="Introduction">
+            <div class="hero__inner">
+                <p class="hero__eyebrow">Digital Marketing &amp; Search Optimization</p>
+                <h1>I build digital properties that get found&mdash;by humans and by AI.</h1>
+                <p class="hero__description">
+                    7 years in digital marketing. GA4/GTM analytics across 250K+ annual sessions.
+                    AI-powered tools shipped to production. Organic search strategies built from scratch.
+                    Based in Santa Barbara, CA.
                 </p>
-
-                <div class="metrics">
-                    <div class="metric">
-                        <div class="number">250K+</div>
-                        <div class="label">Annual sessions tracked</div>
-                    </div>
-                    <div class="metric">
-                        <div class="number">3</div>
-                        <div class="label">Brand sites managed</div>
-                    </div>
-                    <div class="metric">
-                        <div class="number">6+</div>
-                        <div class="label">Years of GA4/GTM data</div>
-                    </div>
-                    <div class="metric">
-                        <div class="number">1</div>
-                        <div class="label">AI tool shipped to prod</div>
-                    </div>
-                </div>
-
-                <h3>What I Built</h3>
-                <ul class="bullet-list">
-                    <li>Full GA4 + Google Tag Manager infrastructure with custom event tracking, conversion funnels, and cross-domain measurement across all three brand properties</li>
-                    <li>Ongoing SEO audit program: keyword rankings, metadata health, content gap analysis, and search intent mapping to prioritize high-impact optimizations</li>
-                    <li>WordPress site architecture and on-page SEO across all properties &mdash; structured data, page speed optimization, crawlability improvements</li>
-                    <li>AI-powered pricing configurator using LLM technology, shipped to production and recognized by executive leadership for direct business impact</li>
-                    <li>Analytics dashboards integrating GA4, Google Ads, and CRM data into a unified view for full-funnel attribution and marketing performance decisions</li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- Case Study 2: Los Bravos -->
-        <section>
-            <div class="section-label">Case Study</div>
-            <div class="case-study">
-                <div class="meta">Los Bravos Consulting &mdash; 2025&ndash;Present &mdash; Santa Barbara, CA</div>
-                <h2>Zero-Budget Inbound Engine for Real Estate</h2>
-                <p>
-                    Los Bravos is a cross-border industrial real estate consulting firm focused on
-                    nearshoring opportunities in Northern Mexico. I built their entire digital presence
-                    and lead intelligence system from scratch &mdash; no ad spend, pure organic strategy.
-                </p>
-
-                <div class="metrics">
-                    <div class="metric">
-                        <div class="number">$0</div>
-                        <div class="label">Paid media budget</div>
-                    </div>
-                    <div class="metric">
-                        <div class="number">1,121</div>
-                        <div class="label">Qualified lead records</div>
-                    </div>
-                    <div class="metric">
-                        <div class="number">6,218</div>
-                        <div class="label">Enriched database records</div>
-                    </div>
-                    <div class="metric">
-                        <div class="number">59</div>
-                        <div class="label">Research packets built</div>
-                    </div>
-                </div>
-
-                <h3>What I Built</h3>
-                <ul class="bullet-list">
-                    <li>losbravos.mx &mdash; designed site architecture, content strategy, and SEO foundation as an organic inbound engine targeting a niche B2B real estate market</li>
-                    <li>Structured lead intelligence platform spanning 4 target industries with research packets, company profiles, and competitive intelligence</li>
-                    <li>AI-powered natural language search tool (Groq LLM) enabling plain-English queries against the full intelligence database &mdash; answer-engine thinking applied to a real business problem</li>
-                    <li>LinkedIn content strategy and targeted audience growth for thought leadership in the nearshoring/industrial real estate space</li>
-                    <li>Delivered 104% of contracted scope including the enriched database (124% of target)</li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- Case Study 3: TKO (brief) -->
-        <section>
-            <div class="section-label">Case Study</div>
-            <div class="case-study">
-                <div class="meta">TKO Advertising &mdash; 2017&ndash;2018 &mdash; Austin, TX (Agency)</div>
-                <h2>Multicultural Campaign Performance</h2>
-                <p>
-                    Agency experience creating bilingual content and managing campaign analytics
-                    across multiple client accounts at a multicultural advertising firm.
-                </p>
-
-                <div class="metrics">
-                    <div class="metric">
-                        <div class="number">440%</div>
-                        <div class="label">Engagement increase (Valvoline)</div>
-                    </div>
-                    <div class="metric">
-                        <div class="number">421K</div>
-                        <div class="label">Facebook followers grown</div>
-                    </div>
-                </div>
-
-                <ul class="bullet-list">
-                    <li>Data-informed content optimization and audience targeting for Valvoline multicultural campaign</li>
-                    <li>Bilingual (EN/ES) content creation and transcreation across paid and organic channels</li>
-                    <li>Social media analytics, reporting, and campaign performance optimization</li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- GEO Perspective -->
-        <section>
-            <div class="section-label">Perspective</div>
-            <h2>My Take on Generative Engine Optimization</h2>
-            <p>
-                The search landscape is splitting in two. Traditional search still matters, but a growing
-                share of high-intent queries now start in AI &mdash; ChatGPT, Gemini, Perplexity,
-                and Google's own AI Overviews. The question isn't whether to optimize for AI-driven
-                discovery. It's how fast you can get there.
-            </p>
-
-            <div class="perspective-block">
-                <p>
-                    Most companies are still treating GEO as a future problem. I think the competitive
-                    window is right now &mdash; Q1/Q2 2026 &mdash; before best practices harden and
-                    everyone catches up.
-                </p>
-                <p>
-                    The advantage goes to teams that understand LLMs from the inside: how they parse
-                    content, what they privilege in retrieval, how structured data and entity clarity
-                    affect citation probability. That's not something you learn from reading blog posts.
-                    You learn it by building with these models.
-                </p>
-                <p>
-                    I've shipped an AI-powered product to production. I use multiple LLMs daily as core
-                    workflow tools. I've built NLP search interfaces. That hands-on fluency with how
-                    these systems actually work &mdash; not just what they output &mdash; is what makes
-                    the difference between incremental SEO tweaks and a real GEO strategy.
-                </p>
-            </div>
-
-            <h3>What I'd Focus On</h3>
-            <ul class="bullet-list">
-                <li><strong>Entity authority:</strong> Making sure the brand is clearly defined, consistently described, and semantically rich across every surface that LLMs can crawl</li>
-                <li><strong>Structured content at the source:</strong> Schema markup, FAQ structures, comparison data, and clear answer-ready formatting that AI models prefer to cite</li>
-                <li><strong>Monitoring AI citations:</strong> Tracking how and when the brand appears in AI-generated responses across ChatGPT, Gemini, Perplexity, and AI Overviews &mdash; building a measurement framework for a channel that doesn't have one yet</li>
-                <li><strong>Natural language keyword evolution:</strong> Shifting from short-tail terms to the conversational, intent-rich queries people actually use when talking to AI</li>
-            </ul>
-        </section>
-
-        <!-- Tools -->
-        <section>
-            <div class="section-label">Toolkit</div>
-            <h2>Tools & Platforms</h2>
-
-            <div class="tools-grid">
-                <div class="tool-item">
-                    <div class="tool-name">Google Analytics 4</div>
-                    <div class="tool-level">Expert &mdash; 6+ years</div>
-                </div>
-                <div class="tool-item">
-                    <div class="tool-name">Google Tag Manager</div>
-                    <div class="tool-level">Expert &mdash; 6+ years</div>
-                </div>
-                <div class="tool-item">
-                    <div class="tool-name">Google Ads</div>
-                    <div class="tool-level">Proficient</div>
-                </div>
-                <div class="tool-item">
-                    <div class="tool-name">WordPress</div>
-                    <div class="tool-level">Expert &mdash; dev + SEO</div>
-                </div>
-                <div class="tool-item">
-                    <div class="tool-name">SQL</div>
-                    <div class="tool-level">Proficient</div>
-                </div>
-                <div class="tool-item">
-                    <div class="tool-name">Python</div>
-                    <div class="tool-level">Working &mdash; data + automation</div>
-                </div>
-                <div class="tool-item">
-                    <div class="tool-name">Tableau</div>
-                    <div class="tool-level">Proficient</div>
-                </div>
-                <div class="tool-item">
-                    <div class="tool-name">Google Sheets</div>
-                    <div class="tool-level">Advanced</div>
-                </div>
-                <div class="tool-item">
-                    <div class="tool-name">AI/LLM Integration</div>
-                    <div class="tool-level">Claude, GPT, Groq, Gemini</div>
-                </div>
-                <div class="tool-item">
-                    <div class="tool-name">HTML/CSS/JS</div>
-                    <div class="tool-level">Proficient</div>
+                <div class="hero__tags" aria-label="Core skills">
+                    <span class="pill pill--accent">SEO / GEO</span>
+                    <span class="pill pill--accent">GA4 / GTM</span>
+                    <span class="pill pill--accent">AI / LLM</span>
+                    <span class="pill">WordPress</span>
+                    <span class="pill">SQL</span>
+                    <span class="pill">Python</span>
+                    <span class="pill">Bilingual EN/ES</span>
                 </div>
             </div>
         </section>
 
-        <footer>
-            <p>Sebastian Becerra &mdash; Santa Barbara, CA</p>
-            <div class="contact-row">
-                <a href="mailto:sebastianmbecerra5@gmail.com">sebastianmbecerra5@gmail.com</a>
-                <a href="https://github.com/sbc1-code">github.com/sbc1-code</a>
+        <!-- ================================================================
+             ABOUT
+             ================================================================ -->
+        <section id="about" class="section" aria-label="About Sebastian Becerra">
+            <div class="container">
+                <p class="section__eyebrow">About</p>
+                <h2>Analyst-turned-builder with a bias toward shipping</h2>
+                <div class="about-grid">
+                    <div class="about-text">
+                        <p>
+                            I have 7 years of experience in digital marketing, rooted in analytics infrastructure
+                            and organic search. I've built and managed GA4 and Google Tag Manager implementations
+                            across 3 brand websites tracking 250K+ annual sessions, shipped an AI-powered pricing
+                            configurator to production using large language models, and built an inbound engine
+                            for a real estate firm from zero with no paid budget.
+                        </p>
+                        <p>
+                            My agency background at TKO Advertising in Austin gave me multicultural campaign
+                            experience and bilingual content creation across English and Spanish. Today I work
+                            at the intersection of analytics, SEO, and AI&mdash;building systems that help
+                            businesses get discovered in both traditional search and AI-driven surfaces.
+                        </p>
+                        <p>
+                            Based in Santa Barbara, California. Native bilingual in English and Spanish.
+                        </p>
+                    </div>
+                </div>
             </div>
-        </footer>
+        </section>
 
-    </div>
+        <!-- ================================================================
+             CASE STUDIES
+             ================================================================ -->
+        <section id="work" class="section section--warm" aria-label="Work experience and case studies">
+            <div class="container">
+                <p class="section__eyebrow">Work</p>
+                <h2>Case studies from real engagements</h2>
+                <p class="section__lead">
+                    Each project involved building systems from the ground up&mdash;analytics infrastructure,
+                    content engines, AI tools, and measurement frameworks.
+                </p>
+
+                <div class="cases-grid">
+
+                    <!-- Case Study 1: SeeScan -->
+                    <article class="case-card">
+                        <p class="case-card__meta">SeeScan, Inc. &mdash; 2019&ndash;Present &mdash; San Diego, CA (Remote)</p>
+                        <h3>Multi-Brand Analytics &amp; Search Infrastructure</h3>
+                        <p class="case-card__description">
+                            SeeScan builds underground inspection technology used by utilities and municipalities
+                            worldwide. As Digital Content Specialist, I own the digital marketing infrastructure
+                            across three brand websites: SeeScan, DeepSea, and SeeSnake.
+                        </p>
+
+                        <div class="metrics-row">
+                            <div class="metric">
+                                <div class="metric__value">250K+</div>
+                                <div class="metric__label">Annual sessions tracked</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric__value">3</div>
+                                <div class="metric__label">Brand sites managed</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric__value">6+</div>
+                                <div class="metric__label">Years GA4/GTM data</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric__value">1</div>
+                                <div class="metric__label">AI tool shipped to prod</div>
+                            </div>
+                        </div>
+
+                        <p class="case-card__list-heading">What I Built</p>
+                        <ul class="case-list">
+                            <li>Full GA4 and Google Tag Manager infrastructure with custom event tracking, conversion funnels, and cross-domain measurement across all three brand properties</li>
+                            <li>Content audit program: metadata review, keyword relevance analysis, and content accuracy checks that improved search performance</li>
+                            <li>WordPress site management and development with on-page SEO, structured data, and page speed optimization</li>
+                            <li>Marketing automation systems for lead nurture and engagement workflows</li>
+                            <li>AI-powered pricing configurator using LLM technology, shipped to production and praised by executive leadership for direct business impact</li>
+                            <li>Analytics reports showing which content was working, where users dropped off, and what was missing&mdash;used for cross-team coordination with engineering, product, and support</li>
+                        </ul>
+                    </article>
+
+                    <!-- Case Study 2: Los Bravos -->
+                    <article class="case-card">
+                        <p class="case-card__meta">Los Bravos Consulting &mdash; 2025&ndash;Present &mdash; Santa Barbara, CA</p>
+                        <h3>Zero-Budget Inbound Engine for Cross-Border Real Estate</h3>
+                        <p class="case-card__description">
+                            Los Bravos is a cross-border industrial real estate consulting firm focused on
+                            nearshoring opportunities in Northern Mexico. As Growth &amp; RevOps Consultant,
+                            I built their entire digital presence and lead intelligence system from
+                            scratch&mdash;no ad spend, pure organic strategy.
+                        </p>
+
+                        <div class="metrics-row">
+                            <div class="metric">
+                                <div class="metric__value">$0</div>
+                                <div class="metric__label">Paid media budget</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric__value">1,121</div>
+                                <div class="metric__label">Qualified lead records</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric__value">6,218</div>
+                                <div class="metric__label">Enriched database records</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric__value">59</div>
+                                <div class="metric__label">Knowledge packets built</div>
+                            </div>
+                        </div>
+
+                        <p class="case-card__list-heading">What I Built</p>
+                        <ul class="case-list">
+                            <li>losbravos.mx&mdash;site architecture, content strategy, and full SEO foundation as an organic inbound engine with $0 paid budget</li>
+                            <li>Structured lead intelligence platform spanning 4 target industries with research packets, company profiles, and competitive intelligence</li>
+                            <li>AI-powered natural language search tool on Groq LLM enabling plain-English queries against the full intelligence database</li>
+                            <li>6,218-record enriched database&mdash;124% of contracted target</li>
+                            <li>LinkedIn content strategy and targeted audience growth for thought leadership in the nearshoring and industrial real estate space</li>
+                            <li>Bilingual workflows across English and Spanish for cross-border communications</li>
+                        </ul>
+                    </article>
+
+                    <!-- Case Study 3: TKO -->
+                    <article class="case-card">
+                        <p class="case-card__meta">TKO Advertising &mdash; 2017&ndash;2018 &mdash; Austin, TX (Agency)</p>
+                        <h3>Multicultural Campaign Performance</h3>
+                        <p class="case-card__description">
+                            Jr. Content Creator &amp; Cultural Strategist at a multicultural advertising agency.
+                            Created bilingual content and managed campaign analytics across multiple client accounts.
+                        </p>
+
+                        <div class="metrics-row">
+                            <div class="metric">
+                                <div class="metric__value">440%</div>
+                                <div class="metric__label">Engagement increase (Valvoline)</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric__value">421K</div>
+                                <div class="metric__label">Facebook followers grown</div>
+                            </div>
+                        </div>
+
+                        <p class="case-card__list-heading">What I Did</p>
+                        <ul class="case-list">
+                            <li>Data-informed content optimization and audience targeting for the Valvoline multicultural campaign</li>
+                            <li>Bilingual content creation and transcreation (English/Spanish) across paid and organic channels</li>
+                            <li>Social media analytics, reporting, and campaign performance optimization</li>
+                        </ul>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ================================================================
+             GEO PERSPECTIVE
+             ================================================================ -->
+        <section id="geo" class="section" aria-label="Perspective on Generative Engine Optimization">
+            <div class="container">
+                <div class="perspective-content">
+                    <p class="section__eyebrow">Perspective</p>
+                    <h2>My take on Generative Engine Optimization</h2>
+
+                    <p>
+                        The search landscape is splitting in two. Traditional search still matters, but a
+                        growing share of high-intent queries now start in AI&mdash;ChatGPT, Gemini, Perplexity,
+                        and Google's own AI Overviews. The question is not whether to optimize for AI-driven
+                        discovery. It is how fast you can get there.
+                    </p>
+
+                    <div class="callout-box">
+                        <p>
+                            Most companies are still treating GEO as a future problem. I think the competitive
+                            window is right now&mdash;before best practices harden and everyone catches up.
+                        </p>
+                        <p>
+                            The advantage goes to teams that understand LLMs from the inside: how they parse
+                            content, what they privilege in retrieval, how structured data and entity clarity
+                            affect citation probability. That is not something you learn from reading blog posts.
+                            You learn it by building with these models.
+                        </p>
+                        <p>
+                            I have shipped an AI-powered product to production. I use multiple LLMs daily as core
+                            workflow tools. I have built NLP search interfaces. That hands-on fluency with how
+                            these systems actually work&mdash;not just what they output&mdash;is what makes
+                            the difference between incremental SEO tweaks and a real GEO strategy.
+                        </p>
+                    </div>
+
+                    <div class="focus-areas">
+                        <h3>What I would focus on</h3>
+                        <ul class="case-list">
+                            <li><strong>Entity authority:</strong> Making sure the brand is clearly defined, consistently described, and semantically rich across every surface that LLMs can crawl</li>
+                            <li><strong>Structured content at the source:</strong> Schema markup, FAQ structures, comparison data, and clear answer-ready formatting that AI models prefer to cite</li>
+                            <li><strong>Monitoring AI citations:</strong> Tracking how and when the brand appears in AI-generated responses across ChatGPT, Gemini, Perplexity, and AI Overviews&mdash;building a measurement framework for a channel that does not have one yet</li>
+                            <li><strong>Natural language keyword evolution:</strong> Shifting from short-tail terms to the conversational, intent-rich queries people actually use when talking to AI</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================================================================
+             TOOLS
+             ================================================================ -->
+        <section id="tools" class="section section--cool" aria-label="Tools and platforms">
+            <div class="container">
+                <div class="tools-content">
+                    <p class="section__eyebrow">Toolkit</p>
+                    <h2>Tools &amp; platforms</h2>
+                    <p class="section__lead">
+                        The stack I use across analytics, development, data, and AI work.
+                    </p>
+
+                    <div class="tools-grid">
+                        <div class="tool-card">
+                            <div class="tool-card__name">Google Analytics 4</div>
+                            <div class="tool-card__level">Expert &mdash; 6+ years</div>
+                        </div>
+                        <div class="tool-card">
+                            <div class="tool-card__name">Google Tag Manager</div>
+                            <div class="tool-card__level">Expert &mdash; 6+ years</div>
+                        </div>
+                        <div class="tool-card">
+                            <div class="tool-card__name">WordPress</div>
+                            <div class="tool-card__level">Expert &mdash; dev + SEO</div>
+                        </div>
+                        <div class="tool-card">
+                            <div class="tool-card__name">Google Sheets</div>
+                            <div class="tool-card__level">Advanced</div>
+                        </div>
+                        <div class="tool-card">
+                            <div class="tool-card__name">SQL</div>
+                            <div class="tool-card__level">Proficient</div>
+                        </div>
+                        <div class="tool-card">
+                            <div class="tool-card__name">Python</div>
+                            <div class="tool-card__level">Working &mdash; data + automation</div>
+                        </div>
+                        <div class="tool-card">
+                            <div class="tool-card__name">Tableau</div>
+                            <div class="tool-card__level">Familiar</div>
+                        </div>
+                        <div class="tool-card">
+                            <div class="tool-card__name">AI / LLM Integration</div>
+                            <div class="tool-card__level">Claude, GPT, Groq, Gemini</div>
+                        </div>
+                        <div class="tool-card">
+                            <div class="tool-card__name">HTML / CSS / JS</div>
+                            <div class="tool-card__level">Proficient</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ====================================================================
+         FOOTER / CONTACT
+         ==================================================================== -->
+    <footer id="contact" class="site-footer" role="contentinfo" aria-label="Contact information">
+        <div class="site-footer__inner">
+            <h2>Let's connect</h2>
+            <p class="site-footer__sub">Santa Barbara, CA &mdash; Available for remote opportunities</p>
+
+            <div class="contact-links">
+                <a class="contact-link contact-link--primary" href="mailto:sebastianmbecerra5@gmail.com">
+                    sebastianmbecerra5@gmail.com
+                </a>
+                <a class="contact-link contact-link--outline" href="https://github.com/sbc1-code" rel="noopener noreferrer" target="_blank">
+                    github.com/sbc1-code
+                </a>
+            </div>
+
+            <div class="site-footer__bottom">
+                <p>&copy; 2026 Sebastian Becerra. Built with semantic HTML, zero frameworks.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ====================================================================
+         Mobile Nav Toggle Script
+         ==================================================================== -->
+    <script>
+        (function () {
+            var toggle = document.querySelector('.nav-toggle');
+            var nav = document.getElementById('site-nav');
+            if (!toggle || !nav) return;
+
+            toggle.addEventListener('click', function () {
+                var expanded = toggle.getAttribute('aria-expanded') === 'true';
+                toggle.setAttribute('aria-expanded', String(!expanded));
+                nav.classList.toggle('site-nav--open');
+            });
+
+            // Close mobile nav when a link is clicked
+            nav.querySelectorAll('a').forEach(function (link) {
+                link.addEventListener('click', function () {
+                    toggle.setAttribute('aria-expanded', 'false');
+                    nav.classList.remove('site-nav--open');
+                });
+            });
+        })();
+    </script>
+
 </body>
 </html>
